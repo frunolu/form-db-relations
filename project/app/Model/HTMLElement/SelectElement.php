@@ -4,14 +4,14 @@ namespace App\Model;
 
 class SelectElement extends HTMLElement
 {
-    protected $options = [];
+    protected array $options = [];
 
     public function __construct()
     {
         parent::__construct('select');
     }
 
-    public function addChildOption($value, $text)
+    public function addChildOption($value, $text): static
     {
         $this->options[] = ['value' => $value, 'text' => $text];
 
@@ -26,7 +26,7 @@ class SelectElement extends HTMLElement
         return "<{$this->tagName}{$attributesString}>{$optionsString}</{$this->tagName}>";
     }
 
-    protected function renderOptions()
+    protected function renderOptions(): string
     {
         $optionsString = '';
         foreach ($this->options as $option) {

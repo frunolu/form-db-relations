@@ -29,7 +29,6 @@ class FormBuilder
             ->setAttribute('value', 'Submit');
 
 
-        // New Added Code
         $inputAlbum = (new InputElement())
             ->setAttribute('type', 'text')
             ->setAttribute('name', 'album')
@@ -40,16 +39,23 @@ class FormBuilder
             ->setAttribute('name', 'album_interpret')
             ->setAttribute('placeholder', 'Enter album interpreter');
 
+        $divElement = new DivElement();
+
         $inputAlbumSkladba = (new InputElement())
             ->setAttribute('type', 'text')
             ->setAttribute('name', 'album_skladba')
             ->setAttribute('placeholder', 'Enter album skladba');
 
         $form->addFormItem($inputUsername)
+            ->addFormItem($divElement)
             ->addFormItem($selectGender)
+            ->addFormItem($divElement)
             ->addFormItem($inputAlbum)
+            ->addFormItem($divElement)
             ->addFormItem($inputAlbumInterpret)
+            ->addFormItem($divElement)
             ->addFormItem($inputAlbumSkladba)
+            ->addFormItem($divElement)
             ->addFormItem($inputSubmit);
 
         echo $form->render();

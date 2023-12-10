@@ -4,28 +4,28 @@ namespace App\Model;
 
 class FormElement extends HTMLElement
 {
-    protected $children = [];
+    protected array $children = [];
 
     public function __construct()
     {
         parent::__construct('form');
     }
 
-    public function addInput(InputElement $input)
+    public function addInput(InputElement $input): static
     {
         $this->children[] = $input;
 
         return $this;
     }
 
-    public function addSelect(SelectElement $select)
+    public function addSelect(SelectElement $select): static
     {
         $this->children[] = $select;
 
         return $this;
     }
 
-    public function addImage(ImageElement $image)
+    public function addImage(ImageElement $image): static
     {
         $this->children[] = $image;
 
@@ -40,7 +40,7 @@ class FormElement extends HTMLElement
         return "<{$this->tagName}{$attributesString}>{$childrenString}</{$this->tagName}>";
     }
 
-    protected function renderChildren()
+    protected function renderChildren(): string
     {
         $childrenString = '';
         foreach ($this->children as $child) {
@@ -50,14 +50,14 @@ class FormElement extends HTMLElement
         return $childrenString;
     }
 
-    public function addFormItem(HTMLElement $formItem)
+    public function addFormItem(HTMLElement $formItem): static
     {
         $this->children[] = $formItem;
 
         return $this;
     }
 
-    public function setAction(string $link)
+    public function setAction(string $link): static
     {
         $this->setAttribute('action', $link);
 
