@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{ifset title}{include title|stripHtml} | {/ifset}Shop</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font.css" rel="stylesheet">
+    <link href="/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="/css/blog.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+{include content}
+
+
+<script src="/js/netteForms.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
