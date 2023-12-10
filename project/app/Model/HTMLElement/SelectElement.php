@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use App\Model\HTMLElement;
+
 class SelectElement extends HTMLElement
 {
     private const TAG_NAME = 'select';
@@ -13,17 +15,16 @@ class SelectElement extends HTMLElement
         parent::__construct(self::TAG_NAME);
     }
 
-    public function buildSelectElement(string $name, string $label, array $options): static
+    public function buildSelectElement(string $name, array $options): SelectElement
     {
-        $this->addAttribute('name', $name);
-        $this->addAttribute('id', $name);
-        $this->addAttribute('class', 'form-control');
-        $this->addOption('', $label);
+        $selectElement = new SelectElement();
+        $selectElement->setAttribute('name', $name);
+
         foreach ($options as $value => $text) {
-            $this->addOption($value, $text);
+            $selectElement->addOption($value, $text);
         }
 
-        return $this;
+        return $selectElement;
     }
 
     public function addOption(string $value, string $text): static
