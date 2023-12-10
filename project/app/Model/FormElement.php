@@ -32,7 +32,7 @@ class FormElement extends HTMLElement
         return $this;
     }
 
-    public function render()
+    public function render(): string
     {
         $attributesString = $this->renderAttributes();
         $childrenString = $this->renderChildren();
