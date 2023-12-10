@@ -49,7 +49,8 @@ class HTMLElement {
         return $this;
     }
 
-    public function getAttributes() {
+    public function getAttributes(): array
+    {
         return $this->attributes;
     }
 

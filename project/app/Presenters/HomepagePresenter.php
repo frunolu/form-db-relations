@@ -7,7 +7,6 @@ namespace App\Presenters;
 use App\Model\FormElement;
 use Nette;
 use Nette\Application\UI\Form as NetteForm;
-use Nette\Application\UI\Presenter;
 use App\Model\FormBuilder;
 
 class HomepagePresenter extends Nette\Application\UI\Presenter
@@ -15,7 +14,7 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
     /**
      * @var FormBuilder
      */
-    private $formBuilder;
+    private FormBuilder $formBuilder;
 
     /**
      * HomepagePresenter constructor.
@@ -37,8 +36,6 @@ class HomepagePresenter extends Nette\Application\UI\Presenter
     {
         $formElement = $this->buildForm();
         $form = new NetteForm;
-        // Set up the form here based on $formElement properties
-        // Example: $form->addText($formElement->getText());
         $form->setAction($this->link('submit'));
 
         return $form;

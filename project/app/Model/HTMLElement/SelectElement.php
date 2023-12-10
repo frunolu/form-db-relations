@@ -11,7 +11,7 @@ class SelectElement extends HTMLElement
         parent::__construct('select');
     }
 
-    public function addChildOption($value, $text): static
+    public function addChildOption(string $value, string $text): static
     {
         $this->options[] = ['value' => $value, 'text' => $text];
 
