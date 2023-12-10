@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-use Nette\Application\UI\Form as NetteForm;
-
 class FormBuilder
 {
     public function buildForm(): FormElement
@@ -12,39 +10,23 @@ class FormBuilder
         $form->setAttribute('action', '/homepage')
             ->setAttribute('method', 'post');
 
-        $inputUsername = (new InputElement())
-            ->setAttribute('type', 'text')
-            ->setAttribute('name', 'username')
-            ->setAttribute('placeholder', 'Enter your username');
+        $inputUsername = $this->buildInputElement('text', 'username', 'Enter your username');
 
         $selectGender = (new SelectElement())
             ->setAttribute('name', 'gender');
+        $selectGender->addOption('male', 'Male')
+            ->addOption('female', 'Female')
+            ->addOption('other', 'Other');
 
-        $selectGender->addChildOption('male', 'Male')
-            ->addChildOption('female', 'Female')
-            ->addChildOption('other', 'Other');
+        $inputSubmit = $this->buildInputElement('submit', 'submit', 'Submit');
 
-        $inputSubmit = (new InputElement())
-            ->setAttribute('type', 'submit')
-            ->setAttribute('value', 'Submit');
+        $inputAlbum = $this->buildInputElement('text', 'album', 'Enter album name');
 
-
-        $inputAlbum = (new InputElement())
-            ->setAttribute('type', 'text')
-            ->setAttribute('name', 'album')
-            ->setAttribute('placeholder', 'Enter album name');
-
-        $inputAlbumInterpret = (new InputElement())
-            ->setAttribute('type', 'text')
-            ->setAttribute('name', 'album_interpret')
-            ->setAttribute('placeholder', 'Enter album interpreter');
+        $inputAlbumInterpret = $this->buildInputElement('text', 'album_interpret', 'Enter album interpreter');
 
         $divElement = new DivElement();
 
-        $inputAlbumSkladba = (new InputElement())
-            ->setAttribute('type', 'text')
-            ->setAttribute('name', 'album_skladba')
-            ->setAttribute('placeholder', 'Enter album skladba');
+        $inputAlbumSkladba = $this->buildInputElement('text', 'album_skladba', 'Enter album skladba');
 
         $form->addFormItem($inputUsername)
             ->addFormItem($divElement)
@@ -61,5 +43,13 @@ class FormBuilder
         echo $form->render();
 
         return $form;
+    }
+
+    private function buildInputElement(string $type, string $name, string $placeholder): InputElement
+    {
+        return (new InputElement())
+            ->setAttribute('type', $type)
+            ->setAttribute('name', $name)
+            ->setAttribute('placeholder', $placeholder);
     }
 }

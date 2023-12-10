@@ -4,14 +4,29 @@ namespace App\Model;
 
 class SelectElement extends HTMLElement
 {
+    private const TAG_NAME = 'select';
+
     protected array $options = [];
 
     public function __construct()
     {
-        parent::__construct('select');
+        parent::__construct(self::TAG_NAME);
     }
 
-    public function addChildOption(string $value, string $text): static
+    public function buildSelectElement(string $name, string $label, array $options): static
+    {
+        $this->addAttribute('name', $name);
+        $this->addAttribute('id', $name);
+        $this->addAttribute('class', 'form-control');
+        $this->addOption('', $label);
+        foreach ($options as $value => $text) {
+            $this->addOption($value, $text);
+        }
+
+        return $this;
+    }
+
+    public function addOption(string $value, string $text): static
     {
         $this->options[] = ['value' => $value, 'text' => $text];
 
@@ -23,7 +38,12 @@ class SelectElement extends HTMLElement
         $attributesString = $this->renderAttributes();
         $optionsString = $this->renderOptions();
 
-        return "<{$this->tagName}{$attributesString}>{$optionsString}</{$this->tagName}>";
+        return $this->getElementString($this->tagName, $attributesString, $optionsString);
+    }
+
+    protected function getElementString(string $tag, string $attributes, string $options): string
+    {
+        return "<{$tag}{$attributes}>{$options}</{$tag}>";
     }
 
     protected function renderOptions(): string
@@ -34,5 +54,10 @@ class SelectElement extends HTMLElement
         }
 
         return $optionsString;
+    }
+
+    private function addAttribute(string $string, string $name): void
+    {
+        $this->attributes[$string] = $name;
     }
 }
