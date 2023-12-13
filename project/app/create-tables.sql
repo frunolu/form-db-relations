@@ -60,11 +60,11 @@ CREATE TABLE IF NOT EXISTS album_skladba (
     );
 
 -- Vložení testovacích dat
-INSERT INTO typ_zanr VALUES (1, 'Rock'), (2, 'Pop'), (3, 'R&B');
+INSERT INTO typ_zanr VALUES (1, 'Rock'), (2, 'Pop'), (3, 'Country');
 INSERT INTO typ_narodnost VALUES (1, 'USA'), (2, 'UK'), (3, 'Czech Republic');
 INSERT INTO interpret VALUES (1, 'The Beatles', 2), (2, 'Queen', 2), (3, 'Karel Gott', 3);
 INSERT INTO album VALUES (1, 1, 'Abbey Road', '1969-09-26'), (2, 2, 'A Night at the Opera', '1975-11-21'), (3, 3, 'Karel Gott - Největší hity', '2000-01-01');
-INSERT INTO skladba VALUES (1, 'Bohemian Rhapsody', 355), (2, 'Hey Jude', 431), (3, 'Vcelka Maja', 180);
+INSERT INTO skladba VALUES (1, 'Bohemian Rhapsody', 355), (2, 'Hey Jude', 431), (3, 'Maja', 180);
 INSERT INTO album_interpret VALUES (1, 1, 1), (2, 2, 2), (3, 3, 3);
 INSERT INTO album_skladba VALUES (1, 1, 1, 1), (2, 2, 1, 2), (3, 3, 3, 3);
 
